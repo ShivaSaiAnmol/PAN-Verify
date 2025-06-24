@@ -1,0 +1,370 @@
+/* Add these styles to your existing styles.css file */
+
+.results-page .checklist {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.results-page .checklist li {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.results-page .checklist li.pass {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #2e7d32;
+}
+
+.results-page .checklist li.fail {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #c62828;
+}
+
+.results-page .checklist li i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+
+/* --- PREVIOUSLY EXISTING CSS --- */
+:root {
+    /* Shared Color Variables */
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --primary-light: #4cc9f0;
+    --success: #4cc9f0;
+    --error: #f72585;
+    --success-solid: #4caf50;
+    --error-solid: #f44336;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --light-gray: #e9ecef;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Shared Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7ff;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+}
+
+.btn i {
+    margin-right: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Document Verification Page Styles */
+.verification-page .container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    margin: 2rem auto;
+}
+
+.verification-page header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.verification-page h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #4361ee, #3a0ca3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.verification-page .subtitle {
+    color: var(--gray);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.verification-page .card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.verification-page .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.verification-page label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.verification-page .file-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    background-color: var(--light);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.verification-page .file-input:hover {
+    border-color: var(--primary);
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.verification-page .file-input input[type="file"] {
+    display: none;
+}
+
+.verification-page .file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.verification-page .file-label i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.verification-page .btn {
+    width: 100%;
+}
+
+.flash-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease;
+    border-left: 4px solid;
+}
+
+.flash-message.error {
+    background-color: rgba(247, 37, 133, 0.2);
+    color: #9d0208;
+    border-color: var(--error);
+}
+
+.flash-message.success {
+    background-color: rgba(76, 201, 240, 0.2);
+    color: #006d77;
+    border-color: var(--success);
+}
+
+.verification-page footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Verification Results Page Styles */
+.results-page body {
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.results-page .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+.results-page .header {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.results-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.results-page .result-card {
+    padding: 30px;
+}
+
+.results-page .verification-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    animation: fadeIn 0.6s ease;
+    border-left: 5px solid;
+}
+
+.results-page .valid-badge {
+    background-color: rgba(76, 175, 80, 0.15);
+    border-color: var(--success-solid);
+}
+
+.results-page .invalid-badge {
+    background-color: rgba(244, 67, 54, 0.15);
+    border-color: var(--error-solid);
+}
+
+.results-page .badge-icon {
+    font-size: 2.5rem;
+    margin-right: 20px;
+}
+
+.results-page .valid-badge .badge-icon {
+    color: var(--success-solid);
+}
+
+.results-page .invalid-badge .badge-icon {
+    color: var(--error-solid);
+}
+
+.results-page .badge-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.results-page .badge-text p {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+.results-page .result-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--light-gray);
+}
+
+.results-page .result-section h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.results-page .result-section h3 i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.results-page .extracted-text {
+    background: var(--light);
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    line-height: 1.8;
+}
+
+.results-page .document-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-top: 15px;
+}
+
+.results-page .document-image:hover {
+    transform: scale(1.02);
+}
+
+.results-page .actions {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .verification-page .container, .results-page .container {
+        padding: 1rem;
+    }
+    
+    .verification-page h1, .results-page h1 {
+        font-size: 2rem;
+    }
+    
+    .results-page .header {
+        padding: 20px;
+    }
+    
+    .results-page .result-card {
+        padding: 20px;
+    }
+    
+    .results-page .verification-badge {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .results-page .badge-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}

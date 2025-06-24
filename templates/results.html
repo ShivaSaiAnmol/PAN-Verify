@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Results | DocVerify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="results-page">
+    <div class="container">
+        <div class="header">
+            <h1>Verification Results</h1>
+            <p>Detailed analysis of your document verification</p>
+        </div>
+        
+        <div class="result-card">
+            <div class="verification-badge {% if result.status == 'valid' %}valid-badge{% else %}invalid-badge{% endif %}">
+                <div class="badge-icon">
+                    <i class="fas {% if result.status == 'valid' %}fa-check-circle{% else %}fa-times-circle{% endif %}"></i>
+                </div>
+                <div class="badge-text">
+                    <h2>{% if result.status == 'valid' %}Valid Document{% else %}Invalid Document{% endif %}</h2>
+                    <p>
+                        {% if result.status == 'valid' %}
+                            This document has been successfully verified.
+                        {% elif result.reason %}
+                            {{ result.reason }}
+                        {% else %}
+                            This document could not be verified.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h3><i class="fas fa-tasks"></i> Verification Checks</h3>
+                <ul class="checklist">
+                    <li class="{% if result.classifier_passed == 'True' %}pass{% else %}fail{% endif %}">
+                        <i class="fas {% if result.classifier_passed == 'True' %}fa-check{% else %}fa-times{% endif %}"></i>
+                        <span>Classifier Check (Initial Visual Verification)</span>
+                    </li>
+                    <li class="{% if result.yolo_ocr_passed == 'True' %}pass{% else %}fail{% endif %}">
+                        <i class="fas {% if result.yolo_ocr_passed == 'True' %}fa-check{% else %}fa-times{% endif %}"></i>
+                        <span>Text Content Check (YOLO + OCR)</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="result-section">
+                <h3><i class="fas fa-align-left"></i> Extracted Text</h3>
+                <div class="extracted-text">
+                    {{ result.text }}
+                </div>
+            </div>
+            
+            {% if result.image %}
+            <div class="result-section">
+                <h3><i class="fas fa-file-image"></i> Processed Document</h3>
+                <img src="{{ url_for('static', filename='processed/' + result.image) }}" alt="Processed document" class="document-image">
+            </div>
+            {% endif %}
+            {# Display the OCR failed crop image if it exists #}
+            {% if result.failed_ocr_crop %}
+            <div class="result-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> OCR Analysis Crop (Debugging)</h3>
+                <p>This image segment was used for OCR, and the required text was not found within it. This can help in debugging why the OCR check failed.</p>
+                <img src="{{ url_for('static', filename='processed/' + result.failed_ocr_crop) }}" alt="OCR Failed Crop" class="document-image">
+            </div>
+            {% endif %}
+
+            <div class="actions">
+                <a href="{{ url_for('index') }}" class="btn">
+                    <i class="fas fa-redo"></i> Verify Another Document
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
