@@ -244,7 +244,6 @@ def index():
                 print(f"DEBUG: Moved uploaded file to processed: {processed_path}")
             else:
                 print(f"Warning: upload_path {upload_path} already removed, cannot move to processed.")
-            # --- MODIFICATION END ---
             
             session['current_result'] = {
                 'status': 'valid' if is_final_valid else 'invalid',
