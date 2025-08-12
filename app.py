@@ -11,7 +11,7 @@ from tensorflow.keras.layers import Dense, Flatten, Input
 from ultralytics import YOLO
 import easyocr
 import tensorflow as tf
-
+ 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-123' # IMPORTANT: Change this to a strong, random key in production
 
